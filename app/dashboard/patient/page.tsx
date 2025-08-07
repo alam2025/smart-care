@@ -147,7 +147,7 @@ export default function Dashboard() {
                   Good Morning
                 </h2>
                 <h1 className="text-[38px] font-bold text-[#000000] mb-1">
-                  Dr. Reyan Anis
+                  Alam Hossain
                 </h1>
                 <p className="text-[16px] text-[#616060]">
                   Have a nice day at work

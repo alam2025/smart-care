@@ -1,5 +1,6 @@
 "use client";
 import FloatingCallButton from "@/components/FloatingCallButton";
+import Image from "next/image";
 import React, { useState } from "react";
 
 const prescriptions = [
@@ -87,11 +88,18 @@ export default function Prescription() {
               <div className="w-full lg:w-3/4">
                 <div className="bg-white rounded-xl shadow-md px-6 pt-6 pb-6 text-center h-full flex flex-col relative">
                   <div className="flex flex-row justify-between items-start">
-                    <img
+                    <Image
+                      src="/logo.png"
+                      alt="Logo"
+                      width={100}
+                      height={100}
+                      priority
+                    />
+                    {/* <img
                       src="/Group.png"
                       alt="Logo"
                       className="w-[70px] h-[56px] sm:w-[154px] sm:h-[124.17px]"
-                    />
+                    /> */}
                     <div className="block sm:hidden w-[220px] overflow-hidden">
                       <div
                         className="bg-[#42B3CE] text-white px-4 py-2"
