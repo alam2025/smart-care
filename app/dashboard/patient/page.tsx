@@ -59,16 +59,16 @@ export default function Dashboard() {
   const [data, setData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-   useEffect(() => {
+  useEffect(() => {
     const fetchBooking = async () => {
       try {
-        const res = await fetch('/api/booking');
+        const res = await fetch("/api/booking");
         // if (!res.ok) throw new Error('Network response was not ok');
         const json = await res.json();
-        console.log("🚀 ~ fetchBooking ~ json:", json.data)
+        console.log("🚀 ~ fetchBooking ~ json:", json.data);
         setData(json.data);
       } catch (error) {
-        console.error('Error fetching booking data:', error);
+        console.error("Error fetching booking data:", error);
       } finally {
         setLoading(false);
       }
@@ -80,14 +80,14 @@ export default function Dashboard() {
   // if (loading) return <div>Loading...</div>;
 
   function formatDateToDDMMYYYY(isoDateString: string): string {
-  const date = new Date(isoDateString);
+    const date = new Date(isoDateString);
 
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based
-  const year = date.getFullYear();
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0"); // Months are 0-based
+    const year = date.getFullYear();
 
-  return `${day}/${month}/${year}`;
-}
+    return `${day}/${month}/${year}`;
+  }
 
   return (
     <div className="min-h-screen flex bg-[#e6f6f6]">
@@ -195,7 +195,7 @@ export default function Dashboard() {
             <CardHeader className="pt-4 px-4 lg:px-[45px]">
               <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
                 <span className="text-lg lg:text-[22px] font-inter font-bold text-[#455468]">
-                  Today Appointment 
+                  Today Appointment
                 </span>
                 <div className="relative w-full md:w-[500px]">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -306,12 +306,9 @@ export default function Dashboard() {
                           {item?.phone}
                         </td>
                         <td className="pl-[95px] pr-4 py-3 gap-2">
-                          <Link
-                            href="/dashboard/patient/prescription"
-                            className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium mr-4"
-                          >
-                            View
-                          </Link>
+                          <button className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium mr-4">
+                            Vist
+                          </button>
                           {/* <Link
                             href="/"
                             className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium"
