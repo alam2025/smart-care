@@ -307,6 +307,16 @@ const Prescription = () => {
                       </li>
                       <li>Explain things simply – Clear words build trust.</li>
                     </ul>
+                    {/* Signature Text */}
+                    <div className="flex flex-col items-end mt-12 mb-12">
+                      {/* Signature line */}
+                      <div className="w-48 border-t-2 border-[#06688E]"></div>
+
+                      {/* Label below the line */}
+                      <p className="w-48 mt-1 text-center text-lg text-black italic">
+                        Signature
+                      </p>
+                    </div>
                   </div>
                   <div className="flex justify-end">
                     <img src="/qr.jpg" alt="qr" className="w-[80px] h-[80px]" />
