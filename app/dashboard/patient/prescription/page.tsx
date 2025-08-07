@@ -308,7 +308,7 @@ const Prescription = () => {
                       <li>Explain things simply – Clear words build trust.</li>
                     </ul>
                   </div>
-                  <div className=" flex justify-end">
+                  <div className="flex justify-end">
                     <img src="/qr.jpg" alt="qr" className="w-[80px] h-[80px]" />
                   </div>
                 </div>

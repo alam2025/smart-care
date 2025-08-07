@@ -42,7 +42,7 @@ const UniversalTable = ({ columns, data, className, classNameHeader }: any) => {
               Prescription
             </Link>
             <Link
-              href="/"
+              href="/dashboard/patient/history/report"
               className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium"
             >
               Report
