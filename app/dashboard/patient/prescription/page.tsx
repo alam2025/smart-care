@@ -54,34 +54,14 @@ const MedicineTable = () => {
   );
 };
 
-export default function Prescription() {
+const Prescription = () => {
   const [search, setSearch] = useState("");
-  const filtered = prescriptions.filter((p) =>
-    p.patient.toLowerCase().includes(search.toLowerCase())
-  );
+  //   const filtered = prescriptions.filter((p) =>
+  //     p.patient.toLowerCase().includes(search.toLowerCase())
+  //   );
   return (
     <div className="min-h-screen flex bg-[#e6f6f6]">
       <main className="flex-1 p-6">
-        {/* <div className='p-6 space-y-4'>
-          <h1 className='text-2xl font-semibold text-[#06688E]'>Prescription Search</h1>
-          <InputField placeholder='Search by patient name...' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full max-w-md' bgColor='bg-[#F4F6F8]' placeholderColor='placeholder-[#5B5F5F]'
-          />
-          <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-            {filtered.length > 0 ? (
-              filtered.map((prescription) => (
-                <Card key={prescription.id} className='bg-white/10 backdrop-blur-sm border border-[#06688E]/30 shadow-md hover:shadow-lg transition-shadow'>
-                  <CardContent className='p-4 space-y-2'>
-                    <h2 className='text-lg font-medium'>{prescription.patient}</h2>
-                    <p className='text-sm'>Date: {prescription.date}</p>
-                    <p className='text-sm'>Notes: {prescription.notes}</p>
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              <p className='text-[#06688E]'>No prescriptions found.</p>
-            )}
-          </div>
-        </div> */}
         <div className="flex justify-center pb-[130px]">
           <div className="w-full max-w-[1200px]">
             <div className="flex justify-center gap-6">
@@ -342,4 +322,6 @@ export default function Prescription() {
       </main>
     </div>
   );
-}
+};
+
+export default Prescription;

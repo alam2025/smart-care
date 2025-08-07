@@ -195,7 +195,7 @@ export default function Dashboard() {
             <CardHeader className="pt-4 px-4 lg:px-[45px]">
               <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
                 <span className="text-lg lg:text-[22px] font-inter font-bold text-[#455468]">
-                  Today Appointment
+                  Today's Appointment
                 </span>
                 <div className="relative w-full md:w-[500px]">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
