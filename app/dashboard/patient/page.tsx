@@ -305,19 +305,19 @@ export default function Dashboard() {
                         <td className="pl-[45px] pr-4 py-3 text-gray-700">
                           {item?.phone}
                         </td>
-                        <td className="pl-[45px] pr-4 py-3 gap-2">
+                        <td className="pl-[95px] pr-4 py-3 gap-2">
                           <Link
                             href="/dashboard/patient/prescription"
                             className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium mr-4"
                           >
-                            Prescription
+                            View
                           </Link>
-                          <Link
+                          {/* <Link
                             href="/"
                             className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium"
                           >
                             Report
-                          </Link>
+                          </Link> */}
                         </td>
                       </tr>
                     ))}
