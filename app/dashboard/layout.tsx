@@ -136,11 +136,11 @@ export default function DashboardLayout({
       ]
     : [
         { name: "Dashboard", href: "/dashboard/patient", icon: <HomeIcon /> },
-        {
-          name: "Appointment List",
-          href: "/dashboard/patient/appointment-list",
-          icon: <DoctorIcon />,
-        },
+        // {
+        //   name: "Appointment List",
+        //   href: "/dashboard/patient/appointment-list",
+        //   icon: <DoctorIcon />,
+        // }, 
         // {
         //   name: "Doctor",
         //   href: "/dashboard/patient/doctor",
@@ -156,11 +156,11 @@ export default function DashboardLayout({
           href: "/dashboard/patient/donation",
           icon: <DonationIcon />,
         },
-        {
-          name: "Prescription",
-          href: "/dashboard/patient/prescription",
-          icon: <DonationIcon />,
-        },
+        // {
+        //   name: "Prescription",
+        //   href: "/dashboard/patient/prescription",
+        //   icon: <DonationIcon />,
+        // },
         {
           name: "Settings",
           href: "/dashboard/patient/settings",
