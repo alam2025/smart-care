@@ -42,24 +42,14 @@ export default function DashboardLayout({
           icon: <DoctorHomeIcon />,
         },
         {
-          name: "Hospital",
-          href: "/dashboard/doctorDashboard/hospital",
-          icon: <DoctorHospitalIcon />,
-        },
-        {
           name: "History",
           href: "/dashboard/doctorDashboard/doctorHistory",
           icon: <HistoryIcon />,
         },
         {
-          name: "Social Media",
-          href: "/dashboard/doctorDashboard/social",
-          icon: <SocialIcon />,
-        },
-        {
-          name: "Donation",
-          href: "/dashboard/doctorDashboard/donation",
-          icon: <DonationIcon />,
+          name: "Hospital",
+          href: "/dashboard/doctorDashboard/hospital",
+          icon: <DoctorHospitalIcon />,
         },
         {
           name: "Income Status",
@@ -67,42 +57,53 @@ export default function DashboardLayout({
           icon: <IncomeIcon />,
         },
         {
-          name: "Reports",
-          href: "/dashboard/doctorDashboard/nodebook",
-          icon: <NodebookIcon />,
-          children: [
-            {
-              name: "Sales Report",
-              href: "/dashboard/doctorDashboard/report/sales-report",
-              icon: <Redo2 className="w-4" />,
-            },
-            {
-              name: "Daily Sales",
-              href: "/dashboard/doctorDashboard/report/daily-sales",
-              icon: <Redo2 className="w-4" />,
-            },
-            {
-              name: "Daily sales report",
-              href: "/dashboard/doctorDashboard/report/daily-sales-report",
-              icon: <Redo2 className="w-4" />,
-            },
-          ],
+          name: "Donation",
+          href: "/dashboard/doctorDashboard/donation",
+          icon: <DonationIcon />,
         },
+        {
+          name: "Social Media",
+          href: "/dashboard/doctorDashboard/social",
+          icon: <SocialIcon />,
+        },
+
+        // {
+        //   name: "Reports",
+        //   href: "/dashboard/doctorDashboard/nodebook",
+        //   icon: <NodebookIcon />,
+        //   children: [
+        //     {
+        //       name: "Sales Report",
+        //       href: "/dashboard/doctorDashboard/report/sales-report",
+        //       icon: <Redo2 className="w-4" />,
+        //     },
+        //     {
+        //       name: "Daily Sales",
+        //       href: "/dashboard/doctorDashboard/report/daily-sales",
+        //       icon: <Redo2 className="w-4" />,
+        //     },
+        //     {
+        //       name: "Daily sales report",
+        //       href: "/dashboard/doctorDashboard/report/daily-sales-report",
+        //       icon: <Redo2 className="w-4" />,
+        //     },
+        //   ],
+        // },
         // {
         //   name: "Nodebook",
         //   href: "/dashboard/doctorDashboard/nodebook",
         //   icon: <NodebookIcon />,
         // },
-        {
-          name: "Prescription",
-          href: "/dashboard/doctorDashboard/prescription",
-          icon: <DonationIcon />,
-        },
-        {
-          name: "Settings",
-          href: "/dashboard/doctorDashboard/settings",
-          icon: <SocialIcon />,
-        },
+        // {
+        //   name: "Prescription",
+        //   href: "/dashboard/doctorDashboard/prescription",
+        //   icon: <DonationIcon />,
+        // },
+        // {
+        //   name: "Settings",
+        //   href: "/dashboard/doctorDashboard/settings",
+        //   icon: <SocialIcon />,
+        // },
       ]
     : isPharmaDashboard
     ? [
@@ -140,7 +141,7 @@ export default function DashboardLayout({
         //   name: "Appointment List",
         //   href: "/dashboard/patient/appointment-list",
         //   icon: <DoctorIcon />,
-        // }, 
+        // },
         // {
         //   name: "Doctor",
         //   href: "/dashboard/patient/doctor",
