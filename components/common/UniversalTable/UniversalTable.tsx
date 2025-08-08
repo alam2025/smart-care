@@ -3,10 +3,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CardContent } from "@/components/ui/card";
 import { ArrowUpDown } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 const UniversalTable = ({ columns, data, className, classNameHeader }: any) => {
   const renderCell = (item: any, column: any) => {
+    const pathname = usePathname();
     switch (column.type) {
       case "avatar":
         const avatar = column.value(item);
@@ -47,6 +49,15 @@ const UniversalTable = ({ columns, data, className, classNameHeader }: any) => {
             >
               Report
             </Link>
+            {/* Show Generate Prescription only in doctorHistory */}
+            {pathname === "/dashboard/doctorDashboard/doctorHistory" && (
+              <Link
+                href="/dashboard/doctor/history/report"
+                className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium ml-4"
+              >
+                Generate Prescription
+              </Link>
+            )}
           </>
         );
       default:
