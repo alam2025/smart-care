@@ -250,51 +250,51 @@ export default function DoctorChatInterface() {
   );
 
   return (
-    <div className='p-4'>
-    <div className='flex flex-col h-[100%] bg-white text-gray-800 m-3'>
-      <div className='flex flex-col md:hidden'>
-        <div className='w-full bg-white p-4 border-b border-[#E9EFF6]'>
-          {/* <PatientList /> */}
-        <div className='w-full bg-white p-4 border-b border-[#E9EFF6]'>
-          <ChatSection />
-          <PrescriptionSection />
-          <RiskFactorsSection />
-        </div>
-        </div>
-        <div className='w-full bg-white p-4'>
-          <PatientInfo />
-        </div>
-      </div>
-      <div className='hidden md:flex lg:hidden flex-col w-full h-full'>
-        <div className='flex flex-row w-full'>
-          <div className='w-2/2 bg-white p-4 border-r border-[#E9EFF6]'>
+    <div className="p-4">
+      <div className="flex flex-col h-[100%] bg-white text-gray-800 m-3">
+        <div className="flex flex-col md:hidden">
+          <div className="w-full bg-white p-4 border-b border-[#E9EFF6]">
+            <ChatSection />
             {/* <PatientList /> */}
           </div>
-          <div className='w-1/2 bg-white p-4'>
+          <div className="w-full bg-white p-4 border-b border-[#E9EFF6]">
+            <PrescriptionSection />
+            <RiskFactorsSection />
+          </div>
+          <div className="w-full bg-white p-4">
             <PatientInfo />
           </div>
         </div>
-        <div className='flex-1 border-t border-[#E9EFF6] p-6 bg-white'>
-          <ChatSection />
-          <PrescriptionSection />
-          <RiskFactorsSection />
+        <div className="hidden md:flex lg:hidden flex-col w-full h-full">
+          <div className="flex flex-row w-full">
+            <div className="w-1/2 bg-white p-4 border-r border-[#E9EFF6]">
+              <ChatSection />
+              {/* <PatientList /> */}
+            </div>
+            <div className="w-1/2 bg-white p-4">
+              <PatientInfo />
+            </div>
+          </div>
+          <div className="flex-1 border-t border-[#E9EFF6] p-6 bg-white">
+            <ChatSection />
+            <PrescriptionSection />
+            <RiskFactorsSection />
+          </div>
         </div>
-      </div>
-      <div className='p-4 hidden lg:flex w-full h-full'>
-        <div className='w-344px] bg-white p-4 border-r border-[#E9EFF6]'>
-          {/* <PatientList /> */}
-          <div className='flex-1 border-l border-r border-[#E9EFF6] p-6'>
-          <ChatSection />
-          <PrescriptionSection />
-          <RiskFactorsSection />
+        <div className="p-4 hidden lg:flex w-full h-full">
+          <div className="w-[344px] bg-white p-4 border-r border-[#E9EFF6]">
+            <ChatSection />
+            {/* <PatientList /> */}
+          </div>
+          <div className="flex-1 border-l border-r border-[#E9EFF6] p-6">
+            <PrescriptionSection />
+            <RiskFactorsSection />
+          </div>
+          <div className="w-[278px] bg-white p-6 border-l border-[#E9EFF6]">
+            <PatientInfo />
+          </div>
         </div>
-        </div>
-        
-        <div className='w-[278px] bg-white p-6 border-l border-[#E9EFF6]'>
-          <PatientInfo />
-        </div>
-      </div>
-      {/* <FloatingCallButton /> */}
+        {/* <FloatingCallButton /> */}
       </div>
     </div>
   );
