@@ -1,46 +1,51 @@
 'use client';
 import TableCardHeader from "@/components/common/TableCardHeader/TableCardHeader";
-import UniversalTableDoctor from "@/components/common/UniversalTable/UniversalTableDoctor";
 import UniversalTablePatientReport from "@/components/common/UniversalTable/UniversalTablePatientReport";
 import { useState } from "react";
 import React from "react";
 
 const data = [
   {
-    id: 1,
-    type: "Pending",
-    date: "May 19, 2025",
-    time: "03:20 pm",
-    phone: "01601528792",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    serial: 1,
+    fileName: "invoice_May_2025.pdf",
+    uploadTime: "09:15 am",
+    action: 1,
   },
   {
-    id: 2,
-    type: "Cancel",
-    date: "May 19, 2025",
-    time: "03:20 pm",
-    phone: "01601528792",
-    image: "https://randomuser.me/api/portraits/men/33.jpg",
+    serial: 2,
+    fileName: "profile_picture.jpg",
+    uploadTime: "11:42 am",
+    action: 2,
   },
   {
-    id: 3,
-    type: "Present",
-    date: "May 19, 2025",
-    time: "03:20 pm",
-    phone: "01601528792",
-    image: "https://randomuser.me/api/portraits/women/33.jpg",
+    serial: 3,
+    fileName: "report_Q1_2025.docx",
+    uploadTime: "02:10 pm",
+    action: 3,
+  },
+  {
+    serial: 4,
+    fileName: "project_plan.xlsx",
+    uploadTime: "04:55 pm",
+    action: 1,
+  },
+  {
+    serial: 5,
+    fileName: "meeting_notes.txt",
+    uploadTime: "07:30 pm",
+    action: 2,
   },
 ];
 
 export default function ReportPage() {
   const transformedCourseData = React.useMemo(() => {
     return data.map((d, index) => ({
-      serial: index + 1, // ✅ Auto numbering for Serial column
-      fileName: d.date, // ✅ Treat "date" as File Name (can change if needed)
-      uploadTime: d.time,
-      action: d.id, // will be passed to Action column
+      serial: index + 1,
+      fileName: d.fileName,
+      uploadTime: d.uploadTime,
+      action: d.action,
     }));
-  }, []);
+  }, [data]);
 
   const columns = [
     {
@@ -62,37 +67,10 @@ export default function ReportPage() {
     },
     {
       header: "Action",
-      type: "action-pres-report", // ✅ Your custom table action type
+      type: "action-pres-report",
       value: (item: any) => item.action,
     },
   ];
-
-  const [uploadedFiles, setUploadedFiles] = useState([
-    {
-      id: 1,
-      name: "blood-test-report.pdf",
-      date: "2025-08-05",
-      url: "/reports/blood-test-report.pdf",
-    },
-    {
-      id: 2,
-      name: "xray-scan.pdf",
-      date: "2025-08-03",
-      url: "/reports/xray-scan.pdf",
-    },
-    {
-      id: 3,
-      name: "mri-brain-scan.pdf",
-      date: "2025-07-28",
-      url: "/reports/mri-brain-scan.pdf",
-    },
-    {
-      id: 4,
-      name: "prescription-july.pdf",
-      date: "2025-07-15",
-      url: "/reports/prescription-july.pdf",
-    },
-  ]);
 
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
@@ -125,16 +103,6 @@ export default function ReportPage() {
 
   return (
     <div className="p-6 space-y-10 bg-gray-50 min-h-screen">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">
-          Patient Report
-        </h1>
-        <p className="text-gray-600">
-          Upload new medical reports and manage previous records.
-        </p>
-      </div>
-
       {/* Upload Form */}
       <form
         onSubmit={handleUpload}
@@ -176,59 +144,6 @@ export default function ReportPage() {
         </button>
       </form>
 
-      {/* Previous Reports Table */}
-      {/* <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">
-          Previous Reports
-        </h2>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full text-sm text-left text-gray-700 border">
-            <thead className="bg-blue-100 text-blue-800 uppercase text-xs font-semibold">
-              <tr>
-                <th className="px-4 py-3 border">#</th>
-                <th className="px-4 py-3 border">File Name</th>
-                <th className="px-4 py-3 border">Uploaded Date</th>
-                <th className="px-4 py-3 border">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {uploadedFiles.map((file, index) => (
-                <tr key={file.id} className="border-t hover:bg-gray-50">
-                  <td className="px-4 py-2 border">{index + 1}</td>
-                  <td className="px-4 py-2 border">{file.name}</td>
-                  <td className="px-4 py-2 border">{file.date}</td>
-                  <td className="px-4 py-2 border space-x-2">
-                    <button
-                      onClick={() => handleView(file.url)}
-                       className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium ml-4"
-                    >
-                      View
-                    </button>
-                    <button
-                      onClick={() => handleDownload(file.url)}
-                      className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium ml-4"
-                    >
-                      Download
-                    </button>
-                  </td>
-                </tr>
-              ))}
-
-              {uploadedFiles.length === 0 && (
-                <tr>
-                  <td
-                    colSpan={4}
-                    className="px-4 py-4 text-center text-gray-500"
-                  >
-                    No reports uploaded yet.
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      </div> */}
       <TableCardHeader title="Previous Reports" />
       <UniversalTablePatientReport
         data={transformedCourseData}
