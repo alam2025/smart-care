@@ -304,6 +304,7 @@ import UniversalTable from "@/components/common/UniversalTable/UniversalTable";
 import TableCardHeader from "@/components/common/TableCardHeader/TableCardHeader";
 import { Card } from "@/components/ui/card";
 import React from "react";
+import UniversalTableDoctor from "@/components/common/UniversalTable/UniversalTableDoctor";
 
 const data = [
   {
@@ -403,7 +404,7 @@ const DoctorHistoryPage = () => {
     <div className="space-y-6 max-w-[95%] mx-auto mt-5">
       <Card className="font-inter">
         <TableCardHeader title="Medical History" />
-        <UniversalTable data={transformedCourseData} columns={columns} />
+        <UniversalTableDoctor data={transformedCourseData} columns={columns} />
       </Card>
     </div>
   );
