@@ -106,12 +106,24 @@ export default function ReportPage() {
       {/* Upload Form */}
       <form
         onSubmit={handleUpload}
-        className="bg-white p-6 rounded-lg shadow max-w-xl space-y-4"
+        className="bg-white p-6 rounded-lg shadow max-w-xl w-full space-y-4"
       >
-        <h2 className="text-xl font-semibold text-gray-700">
-          Upload New Report
-        </h2>
+        {/* Header Row */}
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-semibold text-gray-700">
+            Upload New Report
+          </h2>
 
+          <button
+            type="button"
+            // onClick={handleGeneratePrescription}
+            className="bg-[#06688E] text-white px-4 py-2 rounded-md text-sm font-medium shadow hover:bg-[#05506E] transition"
+          >
+            Generate Prescription
+          </button>
+        </div>
+
+        {/* File Upload */}
         <label className="block w-full">
           <div className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-blue-400 rounded-lg cursor-pointer bg-blue-50 hover:bg-blue-100 transition">
             <span className="text-sm text-blue-700 font-medium">
@@ -129,19 +141,22 @@ export default function ReportPage() {
           </div>
         </label>
 
-        {/* Show file name if selected */}
+        {/* Selected File Name */}
         {selectedFile && (
           <div className="text-sm text-gray-600">
             <strong>Selected file:</strong> {selectedFile.name}
           </div>
         )}
 
-        <button
-          type="submit"
-          className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium ml-4"
-        >
-          Upload Report
-        </button>
+        {/* Submit Button */}
+        <div className="flex justify-start">
+          <button
+            type="submit"
+            className="bg-[#06688E33] text-[#06688E] px-4 py-2 rounded-md text-sm font-medium hover:bg-[#06688E22] transition"
+          >
+            Upload Report
+          </button>
+        </div>
       </form>
 
       <TableCardHeader title="Previous Reports" />
