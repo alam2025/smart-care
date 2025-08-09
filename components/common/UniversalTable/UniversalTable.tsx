@@ -47,12 +47,12 @@ const UniversalTable = ({ columns, data, className, classNameHeader }: any) => {
             >
               Report
             </Link>
-            <Link
+            {/* <Link
               href="/dashboard/doctor/history/report"
               className="bg-[#06688E33] text-[#06688E] px-3 py-1 rounded-md text-sm font-medium ml-4"
             >
               Generate Prescription
-            </Link>
+            </Link> */}
           </>
         );
       default:
