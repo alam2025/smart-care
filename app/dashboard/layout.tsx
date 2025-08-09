@@ -134,6 +134,23 @@ export default function DashboardLayout({
             },
           ],
         },
+        {
+          name: "Employee Management",
+          href: "/dashboard/pharmaDashboard/nodebook",
+          icon: <NodebookIcon />,
+          children: [
+            {
+              name: "Add Employee",
+              href: "/dashboard/pharmaDashboard/report/sales-report",
+              icon: <Redo2 className="w-4" />,
+            },
+            {
+              name: "All Employee",
+              href: "/dashboard/pharmaDashboard/report/daily-sales",
+              icon: <Redo2 className="w-4" />,
+            }
+          ],
+        },
       ]
     : [
         { name: "Dashboard", href: "/dashboard/patient", icon: <HomeIcon /> },
