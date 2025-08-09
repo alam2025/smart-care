@@ -135,22 +135,27 @@ export default function DashboardLayout({
           ],
         },
         {
-          name: "Employee Management",
-          href: "/dashboard/pharmaDashboard/nodebook",
+          name: "Employees",
+          href: "/dashboard/pharmaDashboard/employeeManagement/allEmployee",
           icon: <NodebookIcon />,
-          children: [
-            {
-              name: "Add Employee",
-              href: "/dashboard/pharmaDashboard/employeeManagement/addEmployee",
-              icon: <Redo2 className="w-4" />,
-            },
-            {
-              name: "All Employee",
-              href: "/dashboard/pharmaDashboard/employeeManagement/allEmployee",
-              icon: <Redo2 className="w-4" />,
-            },
-          ],
         },
+        // {
+        //   name: "Employee Management",
+        //   href: "/dashboard/pharmaDashboard/nodebook",
+        //   icon: <NodebookIcon />,
+        //   children: [
+        //     {
+        //       name: "Add Employee",
+        //       href: "/dashboard/pharmaDashboard/employeeManagement/addEmployee",
+        //       icon: <Redo2 className="w-4" />,
+        //     },
+        //     {
+        //       name: "All Employee",
+        //       href: "/dashboard/pharmaDashboard/employeeManagement/allEmployee",
+        //       icon: <Redo2 className="w-4" />,
+        //     },
+        //   ],
+        // },
       ]
     : [
         { name: "Dashboard", href: "/dashboard/patient", icon: <HomeIcon /> },
