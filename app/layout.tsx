@@ -7,6 +7,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import { ToastContainer, toast } from "react-toastify";
 import { AppContextProvider } from "./context/appContext";
+import ReduxProvider from "@/lib/redux/providers/ReduxProvider";
 
 // const geistSans = Geist({
 //   variable: '--font-geist-sans',
@@ -45,7 +46,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`  antialiased bg-white text-black`}>
         {!hideHeader && <Header />}
-        <AppContextProvider>{children}</AppContextProvider>
+        <ReduxProvider>
+          <AppContextProvider>{children}</AppContextProvider>
+        </ReduxProvider>
+
         <ToastContainer />
       </body>
       {/* <body className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} ${inter.variable}  antialiased bg-white text-black`}>

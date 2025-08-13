@@ -33,12 +33,12 @@ export default function LoginPage() {
       const response = await axios.post("/api/auth/login", {username,password});
 
       console.log("🚀 ~ handleLogin ~ response:", response);
-      
+
       router.push(`/dashboard/${role === 'doctor' ? 'doctorDashboard' : 'patient'}`);
       // if (response.success) {
       //   localStorage.setItem('isLoggedIn', 'true');
       //   localStorage.setItem('userRole', role);
-      
+
       // } else {
       //   setError(response.message || 'Invalid credentials');
       // }
