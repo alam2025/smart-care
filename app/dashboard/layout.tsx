@@ -1,9 +1,17 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { ChevronDown, ChevronUp, Flag, Menu, Redo, Redo2 } from "lucide-react";
-import { useState } from "react";
-import { usePathname } from "next/navigation";
+import {
+  ChevronDown,
+  ChevronUp,
+  Flag,
+  LogOut,
+  Menu,
+  Redo,
+  Redo2,
+} from "lucide-react";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import DashboardHeader from "@/components/DashboardHeader";
 import HomeIcon from "@/components/svg/homeIcon";
 import DoctorIcon from "@/components/svg/doctorIcon";
@@ -16,6 +24,10 @@ import SocialIcon from "@/components/svg/socialIcon";
 import { IncomeIcon } from "@/components/svg/incomeIcon";
 import { NodebookIcon } from "@/components/svg/nodebookIcon";
 import DonationCard from "@/components/common/DonationCard/DonationCard";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
+import { useAppDispatch } from "@/lib/redux/hooks";
+import { logout } from "@/lib/redux/features/auth/authSlice";
 
 export default function DashboardLayout({
   children,
@@ -27,11 +39,23 @@ export default function DashboardLayout({
   const pathname = usePathname();
   const isDoctor = pathname.includes("/dashboard/doctorDashboard");
   const isPharmaDashboard = pathname.includes("/dashboard/pharmaDashboard");
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  useEffect(() => {
+    if (!user) router.push("/login");
+  }, [user, router]);
 
   const toggleItem = (name: string) => {
     setOpenItems((prev) =>
       prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]
     );
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   const menuItems = isDoctor
@@ -276,6 +300,17 @@ export default function DashboardLayout({
                   </div>
                 );
               })}
+
+              <button
+                onClick={() => handleLogout()}
+                className="flex items-center gap-2 w-full cursor-pointer p-2 hover:bg-[#33ABAE] hover:text-white rounded font-semibold transition-colors"
+              >
+                <LogOut
+                  className="bg-white p-2 rounded-md text-[#33ABAE]"
+                  size={36}
+                />
+                Logout
+              </button>
             </nav>
           </div>
           {/* -------> donation card is here < ------------ */}

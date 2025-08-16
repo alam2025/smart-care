@@ -8,27 +8,10 @@ import Header from "@/components/Header";
 import { ToastContainer, toast } from "react-toastify";
 import { AppContextProvider } from "./context/appContext";
 import ReduxProvider from "@/lib/redux/providers/ReduxProvider";
-
-// const geistSans = Geist({
-//   variable: '--font-geist-sans',
-//   subsets: ['latin'],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: '--font-geist-mono',
-//   subsets: ['latin'],
-// });
-
-// const syne = Syne({
-//   subsets: ['latin'],
-//   weight: ['400', '500', '600', '700', '800'],
-//   variable: '--font-syne',
-// });
-// const inter = Inter({
-//   subsets: ['latin'],
-//   variable: '--font-inter',
-//   weight: ['400', '500', '600', '700','800'],
-// });
+import { useEffect } from "react";
+import { store } from "@/lib/redux/store";
+import { loadFromStorage } from "@/lib/redux/features/auth/authSlice";
+import { initAuthFromStorage } from "@/lib/utils";
 
 export default function RootLayout({
   children,
@@ -36,6 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+
+  useEffect(() => {
+    initAuthFromStorage();
+  }, []);
 
   const hideHeader =
     pathname.startsWith("/login") ||
