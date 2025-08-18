@@ -1,10 +1,12 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 export default function DashboardHeader() {
   const pathname = usePathname();
-
+  const { user } = useSelector((state: RootState) => state.auth);
   // Check which dashboard we're on
   const isDoctorDashboard = pathname.includes("/dashboard/doctorDashboard");
   const isPatientDashboard = pathname.includes("/dashboard/patient");
@@ -64,7 +66,7 @@ export default function DashboardHeader() {
             />
             <div className="ml-2 hidden md:flex flex-col text-sm">
               <span className="text-[14px] text-[#000]">
-                {isDoctorDashboard ? "Dr. Refat Al Rahim" : "Patient Name"}
+                {user && user.firstName} {user && user.lastName}
               </span>
               <span className="text-[#717070] text-[14px]">
                 ID: {isDoctorDashboard ? "DOC202503" : "PAT202503"}

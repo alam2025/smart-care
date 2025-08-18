@@ -1,4 +1,5 @@
 "use client";
+
 import AiAssistantButton from "@/components/AIAssistantButton";
 import FloatingCallButton from "@/components/FloatingCallButton";
 import DnaIcon from "@/components/svg/dnaIcon";
@@ -7,10 +8,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import InputField from "@/components/ui/InputField";
+import { RootState } from "@/lib/redux/store";
 import { ArrowUpDown, PhoneOff, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const data = [
   {
@@ -57,7 +60,8 @@ const data = [
 
 export default function Dashboard() {
   const [data, setData] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
+
+  const { user, loading } = useSelector((state: RootState) => state.auth);
 
   useEffect(() => {
     const fetchBooking = async () => {
@@ -70,7 +74,6 @@ export default function Dashboard() {
       } catch (error) {
         console.error("Error fetching booking data:", error);
       } finally {
-        setLoading(false);
       }
     };
 
@@ -89,65 +92,21 @@ export default function Dashboard() {
     return `${day}/${month}/${year}`;
   }
 
+  if (loading) return "Loading ....";
+
   return (
     <div className="min-h-screen flex bg-[#e6f6f6]">
       <main className="flex-1 pt-4">
         <div className="space-y-6 max-w-[95%] mx-auto">
-          {/* top banner */}
-          <div className="lg:hidden bg-white rounded-2xl p-4 shadow flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
-              <h2 className="text-2xl text-[#2B6F71] font-semibold mb-2">
-                Good Morning
-              </h2>
-              <h1 className="text-3xl font-bold text-[#000000] mb-1">
-                Dr. Reyan Anis
-              </h1>
-              <p className="text-base text-[#616060]">
-                Have a nice day at work
-              </p>
-            </div>
-            <div>
-              <Image
-                src="/docter-group2.svg"
-                alt="Doctors"
-                width={250}
-                height={120}
-                className="object-contain h-[100px] w-auto"
-                priority
-              />
-            </div>
-            <div>
-              <div className="fixed bottom-6 left-1/2 md:left-[57%] transform -translate-x-1/2 z-50 w-full max-w-[261px] h-[82px] px-4">
-                {/* <button className="flex items-center bg-[#33ABAE] border-2 border-[#2B6F71] text-white py-3 px-6 rounded-full shadow-lg hover:bg-[#2B9A9D] transition w-full cursor-pointer">
-                  <div className="mr-3 flex items-center justify-center bg-white rounded-full p-1.5">
-                    <PhoneOff
-                      className="h-[36px] w-[36px]"
-                      style={{ color: "#33ABAE" }}
-                    />
-                  </div>
-                  <div className="text-left leading-tight">
-                    <div className="font-semibold text-[22px] sm:text-base">
-                      IN Call
-                    </div>
-                    <div className="text-[14px] text-white/80">
-                      Click To End Call.
-                    </div>
-                  </div>
-                </button> */}
-                <h1>test</h1>
-              </div>
-            </div>
-          </div>
-
           {/* ------------->  top banner desktop < ----------------------- */}
-          <div className="hidden lg:block bg-white rounded-2xl font-syne shadow">
-            <div className="flex items-center justify-between">
+          <div className=" bg-white rounded-2xl font-syne shadow">
+            <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="pl-8 py-8">
-                <h2 className="text-[34px] text-[#2B6F71] font-semibold">
+                <h2 className="text-2xl lg:text-[34px] text-[#2B6F71] font-semibold">
                   Good Morning
                 </h2>
-                <h1 className="text-[38px] font-bold text-[#000000] mb-1">
-                  Alam Hossain
+                <h1 className="text-3xl lg:text-[38px] font-bold text-[#000000] mb-1">
+                  {user && user.firstName} {user && user.lastName}
                 </h1>
                 <p className="text-[16px] text-[#616060]">
                   Have a nice day at work
@@ -159,28 +118,12 @@ export default function Dashboard() {
                 alt="Doctors"
                 width={414}
                 height={190}
-                className="object-contain h-[200px] w-auto"
+                className="object-contain hidden lg:block h-[100px] lg:h-[200px] w-auto"
                 priority
               />
 
-              <div className="mr-8">
-                <div className=" w-full max-w-[261px]  px-4 ">
-                  {/* <button className="flex items-center bg-[#33ABAE] border-2 border-[#2B6F71] text-white py-3 px-6 rounded-full shadow-lg hover:bg-[#2B9A9D] transition w-full cursor-pointer">
-                    <div className="mr-3 flex items-center justify-center bg-white rounded-full p-1.5">
-                      <PhoneOff
-                        className="h-[36px] w-[36px]"
-                        style={{ color: "#33ABAE" }}
-                      />
-                    </div>
-                    <div className="text-left leading-tight">
-                      <div className="font-semibold text-[22px] sm:text-base">
-                        IN Call
-                      </div>
-                      <div className="text-[14px] text-white/80">
-                        Click To End Call.
-                      </div>
-                    </div>
-                  </button> */}
+              <div className="mr-8 ">
+                <div className="  px-4 ">
                   <AiAssistantButton />
                 </div>
               </div>

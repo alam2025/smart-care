@@ -11,13 +11,6 @@ import {
 } from "@livekit/components-react";
 import { Room, RoomEvent } from "livekit-client";
 
-export type ConnectionDetails = {
-  serverUrl: string;
-  roomName: string;
-  participantName: string;
-  participantToken: string;
-};
-
 export default function AiAssistantButton() {
   const [room] = useState(new Room());
 
@@ -29,20 +22,32 @@ export default function AiAssistantButton() {
   }, [room]);
 
   const onConnectButtonClicked = useCallback(async () => {
-    const companyId: any = "680f869e974b38f80445645";
-    const url = new URL(
-      process.env.NEXT_PUBLIC_CONN_DETAILS_ENDPOINT ??
-        "/api/connection-details",
-      window.location.origin
+    const companyId = "680f869e974b38f8047fd9"; // dynamic if needed
+    const response = await fetch(
+      "http://localhost:4000/api/v1/assistant/token",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          roomName: `company-${companyId}`,
+          identity: `user-${Math.floor(Math.random() * 1000)}`,
+        }),
+      }
     );
-    url.searchParams.set("companyId", companyId);
-    const response = await fetch(url.toString());
-    const connectionDetailsData: ConnectionDetails = await response.json();
-    await room.connect(
-      connectionDetailsData.serverUrl,
-      connectionDetailsData.participantToken
-    );
+
+    const data = await response.json();
+    await room.connect(data.serverUrl, data.token);
     await room.localParticipant.setMicrophoneEnabled(true);
+
+    // Spawn AI agent
+    await fetch("http://localhost:4000/api/v1/assistant/agent-join", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        roomName: `company-${companyId}`,
+        agentIdentity: "assistant-bot",
+      }),
+    });
   }, [room]);
 
   return (
